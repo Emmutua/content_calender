@@ -1,11 +1,11 @@
 package com.emmutua.content_calender.model;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
 
 
 import java.time.LocalDateTime;
 
+//h2 database is great for prototype
 public record Content(
         Integer id,
         @NotBlank
@@ -13,7 +13,7 @@ public record Content(
         String desc,
         Status status,
         Type contentType,
-        LocalDateTime dataCreated,
-        LocalDateTime dataUpdated,
+        LocalDateTime dateCreated,
+        LocalDateTime dateUpdated,
         String url
 ) {}
