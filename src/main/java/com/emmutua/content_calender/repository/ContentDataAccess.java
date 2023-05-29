@@ -24,7 +24,7 @@ class ContentDataAccess implements ContentDao {
     @Override
     public List<Content> selectContent() {
         var sql = """
-                SELECT id, title, `desc`, status, contentType, dateCreated, dateUpdated, url
+                SELECT *
                  FROM content 
                  LIMIT 100;
                 """;
@@ -32,15 +32,15 @@ class ContentDataAccess implements ContentDao {
     }
 
     @Override
-    public int insertContent(Content content) {
+    public Integer insertContent(Content content) {
         var sql = """
                 INSERT INTO Content (title,`desc`,`status`,contentType,dateCreated,dateUpdated,url) values (?, ?, ?, ?, ?, ?, ?);
                 """;
-        return jdbcTemplate.update(sql, content.title(), content.desc(),content.status(), content.contentType(), content.dateCreated(),content.dateUpdated(),content.url());
+        return jdbcTemplate.update(sql, content.title(), content.desc(),content.status(), content.contentType(), LocalDateTime.now(),content.dateUpdated(),content.url());
     }
 
     @Override
-    public int deleteContent(int id) {
+    public Integer deleteContent(Integer id) {
         var sql = """
                 DELETE FROM Content where id = ?;
                 """;
@@ -48,9 +48,9 @@ class ContentDataAccess implements ContentDao {
     }
 
     @Override
-    public Optional<Content> selectContentById(int id) {
+    public Optional<Content> selectContentById(Integer id) {
         var sql = """
-                SELECT title,desc,status,contentType,dateCreated,dateUpdated,url FROM Content where id = ?;
+                SELECT * FROM Content where id = ?;
                 """;
         return jdbcTemplate.query(sql, new ContentRowMapper(), id).stream().findFirst();
     }

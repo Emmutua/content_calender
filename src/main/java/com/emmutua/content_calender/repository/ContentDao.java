@@ -8,8 +8,8 @@ import java.util.Optional;
 //insert, delete, select, optional
 public interface ContentDao {
     List<Content> selectContent();
-    int insertContent(Content content);
-    int deleteContent(int id);
+    Integer insertContent(Content content);
+    Integer deleteContent(Integer id);
 
-    Optional<Content> selectContentById(int id);
+    Optional<Content> selectContentById(Integer id);
 }

@@ -1,20 +1,15 @@
-package com.emmutua.content_calender.repository;
-
+package com.emmutua.content_calender.service;
 
 import com.emmutua.content_calender.model.Content;
-import com.emmutua.content_calender.model.Status;
-import com.emmutua.content_calender.model.Type;
-import jakarta.annotation.PostConstruct;
-import org.springframework.data.relational.core.sql.In;
+import com.emmutua.content_calender.repository.ContentDao;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
-//keep collection of the pieces of content in memory
 @Service
-public class ContentService {
+public
+class ContentService {
     private final ContentDao contentDao;
 
     public ContentService(ContentDao contentDao) {
@@ -42,5 +37,3 @@ public class ContentService {
         return contentDao.selectContentById(id).stream().filter(c -> c.id().equals(id)).count() == 1;
     }
 }
-
-

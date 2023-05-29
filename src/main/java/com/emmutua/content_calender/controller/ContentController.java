@@ -2,7 +2,7 @@ package com.emmutua.content_calender.controller;
 
 import com.emmutua.content_calender.model.Content;
 import com.emmutua.content_calender.repository.ContentRepository;
-import com.emmutua.content_calender.repository.ContentService;
+import com.emmutua.content_calender.service.ContentService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -32,7 +32,7 @@ private final ContentRepository repository;
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Content Not found"));
     }
 
-    @GetMapping("/filter/{keyword}")
+    @GetMapping("/{keyword}")
     public List<Content> findByTitle(@PathVariable String keyword){
         return repository.findAllByTitleContains(keyword);
     }

@@ -11,8 +11,8 @@ public record Content(
         @NotBlank
         String title,
         String desc,
-        Status status,
-        Type contentType,
+        String status,
+        String contentType,
         LocalDateTime dateCreated,
         LocalDateTime dateUpdated,
         String url

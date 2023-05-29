@@ -4,7 +4,7 @@ import com.emmutua.content_calender.model.Content;
 import com.emmutua.content_calender.model.Status;
 import com.emmutua.content_calender.model.Type;
 import com.emmutua.content_calender.repository.ContentRepository;
-import com.emmutua.content_calender.repository.ContentService;
+import com.emmutua.content_calender.service.ContentService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -23,10 +23,10 @@ public class Application {
 		return args ->{
 			Content content = new Content(
 					1,
-					"MyFirstBlogPOst",
+					"CHAT GPT BLOG APPLICATION",
 					"MyFirstBlogPost",
-					Status.IDEA,
-					Type.ARTICLE,
+					"Status.IDEA",
+					"Type.ARTICLE",
 					LocalDateTime.now(),
 					null,
 					"http://localhost:8"
