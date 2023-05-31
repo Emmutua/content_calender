@@ -34,9 +34,9 @@ class ContentDataAccess implements ContentDao {
     @Override
     public Integer insertContent(Content content) {
         var sql = """
-                INSERT INTO Content (title,`desc`,`status`,contentType,dateCreated,dateUpdated,url) values (?, ?, ?, ?, ?, ?, ?);
+                INSERT INTO content (title,descr,status,content__Type,date__Created,date__Updated,url) values (?, ?, ?, ?, ?, ?, ?);
                 """;
-        return jdbcTemplate.update(sql, content.title(), content.desc(),content.status(), content.contentType(), LocalDateTime.now(),content.dateUpdated(),content.url());
+        return jdbcTemplate.update(sql, content.title(), content.descr(),content.status(), content.content__Type(), LocalDateTime.now(),content.date__Updated(),content.url());
     }
 
     @Override
@@ -55,7 +55,7 @@ class ContentDataAccess implements ContentDao {
         return jdbcTemplate.query(sql, new ContentRowMapper(), id).stream().findFirst();
     }
     public void updateContent(int id, String title, String desc, String status, String contentType, String URL) {
-        String sql = "UPDATE Content SET title=?, desc=?, status=?, content_type=?, date_updated=NOW(), url=? WHERE id=?";
+        String sql = "UPDATE Content SET title=?, descr=?, status=?, content_type=?, date_updated=NOW(), url=? WHERE id=?";
         jdbcTemplate.update(sql, title, desc, status, contentType, URL, id);
     }
 }

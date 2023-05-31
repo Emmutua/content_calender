@@ -1,17 +1,18 @@
 package com.emmutua.content_calender;
 
+import com.emmutua.content_calender.config.ContentCalenderProperties;
 import com.emmutua.content_calender.model.Content;
-import com.emmutua.content_calender.model.Status;
-import com.emmutua.content_calender.model.Type;
-import com.emmutua.content_calender.repository.ContentRepository;
 import com.emmutua.content_calender.service.ContentService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 
 import java.time.LocalDateTime;
 
+@EnableConfigurationProperties(ContentCalenderProperties.class)
 @SpringBootApplication
 public class Application {
 	public static void main(String[] args) {

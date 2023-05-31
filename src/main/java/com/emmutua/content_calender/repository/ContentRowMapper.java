@@ -20,14 +20,14 @@ public class ContentRowMapper implements RowMapper<Content> {
         return new Content(
                 rs.getInt("id"),
                 rs.getString("title"),
-                rs.getString("desc"),
+                rs.getString("descr"),
 //                Status.valueOf(rs.getString("status")),
 //                Type.valueOf(rs.getString("contentType")),
                 rs.getString("status"),
-                rs.getString("contentType"),
+                rs.getString("content__Type"),
                 //rs.getTimestamp("dateCreated").toLocalDateTime(),
-                rs.getObject("dateCreated", LocalDateTime.class),
-                rs.getObject("dateUpdated",LocalDateTime.class),
+                rs.getObject("date__Created", LocalDateTime.class),
+                rs.getObject("date__Updated",LocalDateTime.class),
                 rs.getString("url")
         );
     }

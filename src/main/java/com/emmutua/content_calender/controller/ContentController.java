@@ -32,7 +32,7 @@ private final ContentRepository repository;
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Content Not found"));
     }
 
-    @GetMapping("/{keyword}")
+    @GetMapping("/filter/{keyword}")
     public List<Content> findByTitle(@PathVariable String keyword){
         return repository.findAllByTitleContains(keyword);
     }

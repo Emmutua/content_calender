@@ -10,10 +10,10 @@ public record Content(
         Integer id,
         @NotBlank
         String title,
-        String desc,
+        String descr,
         String status,
-        String contentType,
-        LocalDateTime dateCreated,
-        LocalDateTime dateUpdated,
+        String content__Type,
+        LocalDateTime date__Created,
+        LocalDateTime date__Updated,
         String url
 ) {}
