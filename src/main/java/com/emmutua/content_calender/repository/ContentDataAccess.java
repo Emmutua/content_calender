@@ -36,7 +36,7 @@ class ContentDataAccess implements ContentDao {
         var sql = """
                 INSERT INTO content (title,descr,status,content__Type,date__Created,date__Updated,url) values (?, ?, ?, ?, ?, ?, ?);
                 """;
-        return jdbcTemplate.update(sql, content.title(), content.descr(),content.status(), content.content__Type(), LocalDateTime.now(),content.date__Updated(),content.url());
+        return jdbcTemplate.update(sql, content.title(), content.description(),content.status(), content.contentType(), LocalDateTime.now(),content.dateUpdated(),content.url());
     }
 
     @Override

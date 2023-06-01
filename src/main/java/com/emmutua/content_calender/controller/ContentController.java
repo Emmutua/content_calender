@@ -14,21 +14,19 @@ import java.util.List;
 @RequestMapping("/api/content")
 @CrossOrigin
 public class ContentController {
-    private final ContentService contentService;
 private final ContentRepository repository;
     public ContentController(ContentService contentService, ContentRepository repository) {
-        this.contentService = contentService;
         this.repository = repository;
     }
 
     @GetMapping("")
     public List<Content> findAll() {
-        return contentService.findAll();
+        return repository.findAll();
     }
 
     @GetMapping("/{id}")
     public Content findById(@PathVariable Integer id) {
-        return contentService.findById(id)
+        return repository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Content Not found"));
     }
 
@@ -40,25 +38,25 @@ private final ContentRepository repository;
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("")
     public void create(@Valid @RequestBody Content content) {
-        contentService.save(content);
+        repository.save(content);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PutMapping("/{id}")
     public void update(@RequestBody Content content, @PathVariable Integer id) {
-        if (!contentService.contentExists(id)) {
+        if (!repository.existsById(id)) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Content not found");
         }
-        contentService.save(content);
+        repository.save(content);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Integer id) {
-        if (!contentService.contentExists(id)) {
+        if (!repository.existsById(id)) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
-contentService.delete(id);
+repository.deleteById(id);
     }
 }
 
